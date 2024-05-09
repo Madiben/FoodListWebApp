@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using FoodListWebApp.Models;
 
 namespace FoodListWebApp.Data
 {
@@ -9,5 +10,6 @@ namespace FoodListWebApp.Data
             : base(options)
         {
         }
+        public DbSet<FoodListWebApp.Models.Food> Food { get; set; } = default!;
     }
 }

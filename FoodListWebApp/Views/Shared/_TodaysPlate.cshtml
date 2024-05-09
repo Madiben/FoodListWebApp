@@ -1,0 +1,16 @@
+﻿@model List<FoodListWebApp.Models.Food>
+
+@if (Model.Any())
+{
+    @foreach (var foodItem in Model)
+    {
+        <div class="col-md-6">
+            <h2>@foodItem.Name</h2>
+            <p>@foodItem.Description</p>
+        </div>
+    }
+}
+else
+{
+    <p>No plate available for today.</p>
+}
