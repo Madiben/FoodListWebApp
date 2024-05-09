@@ -1,0 +1,54 @@
+﻿@model IEnumerable<FoodListWebApp.Models.Food>
+
+@{
+    ViewData["Title"] = "Foods";
+    bool isLoggedIn = User.Identity.IsAuthenticated;
+}
+
+<h1>Index</h1>
+
+<p>
+    @if (isLoggedIn)
+    {
+        <a asp-action="Create">Create New</a>
+    }
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @if (isLoggedIn)
+                {
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> <span>|</span>
+                    <a asp-action="Details" asp-route-id="@item.Id">Check The Recipe</a> <span>|</span>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                }
+                else
+                {
+                    <a asp-action="Details" asp-route-id="@item.Id">Check The Recipe</a>
+                }
+            </td>
+
+
+        </tr>
+}
+    </tbody>
+</table>
